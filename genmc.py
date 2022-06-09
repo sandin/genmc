@@ -316,6 +316,14 @@ class microcode_viewer_t(kw.simplecustviewer_t):
             return True
         return False
 
+    def OnDblClick(self, shift):
+        word = self.GetCurrentWord()
+        ea = int(word, base=16)
+        if ea > 0:
+            kw.jumpto(ea)
+        #print("OnDblClick, shift=%d, current ea=%s" % (shift, hex(ea)))
+        return True
+    
 # -----------------------------------------------------------------------------
 def ask_desired_maturity():
     """Displays a dialog which lets the user choose a maturity level
